@@ -26,7 +26,7 @@ public class CommandeController {
     @GetMapping("/")
     public String showDashboard() {
 
-        return "redirect:http://localhost:8082/dashboard";
+        return "redirect:https://cool-care-production.up.railway.app/dashboard";
     }
 
     @GetMapping("/home")
@@ -48,7 +48,7 @@ public class CommandeController {
         Long id = service.saveCommande(commande).getNum_commande();
         String message = "Record with id : '"+id+"' is saved successfully !";
         model.addAttribute("message", message);
-        return "redirect:http://localhost:8082/dashboard";
+        return "redirect:https://cool-care-production.up.railway.app/dashboard";
     }
 
     @GetMapping("/getAllCommandes")
@@ -76,7 +76,7 @@ public class CommandeController {
         } catch (CommandeNotFoundException e) {
             e.printStackTrace();
             attributes.addAttribute("message", e.getMessage());
-            page="redirect:http://localhost:8082/dashboard";
+            page="redirect:https://cool-care-production.up.railway.app/dashboard";
         }
         return page;
     }
@@ -89,7 +89,7 @@ public class CommandeController {
         service.updateCommande(commande);
         Long num_commande = commande.getNum_commande();
         attributes.addAttribute("message", "Commande with id: '"+num_commande+"' is updated successfully !");
-        return "redirect:http://localhost:8082/dashboard";
+        return "redirect:https://cool-care-production.up.railway.app/dashboard";
     }
 
     @GetMapping("/delete")
@@ -104,6 +104,6 @@ public class CommandeController {
             e.printStackTrace();
             attributes.addAttribute("message", e.getMessage());
         }
-        return "redirect:http://localhost:8082/dashboard";
+        return "redirect:https://cool-care-production.up.railway.app/dashboard";
     }
 }

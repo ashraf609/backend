@@ -30,7 +30,7 @@ public class ClientController {
     @GetMapping("/")
     public String showDashboard() {
 
-        return "redirect:http://localhost:8082/dashboard";
+        return "redirect:https://cool-care-production.up.railway.app/dashboard";
     }
 
     @GetMapping("/home")
@@ -52,7 +52,7 @@ public class ClientController {
         Long id = service.saveClient(client).getNum_client();
         String message = "Record with num_client : '" + id + "' is saved successfully!";
         model.addAttribute("message", message);
-        return "redirect:http://localhost:8082/dashboard";
+        return "redirect:https://cool-care-production.up.railway.app/dashboard";
     }
 
     private String saveImage(MultipartFile file) {
@@ -89,7 +89,7 @@ public class ClientController {
         } catch (ClientNotFoundException e) {
             e.printStackTrace();
             attributes.addAttribute("message", e.getMessage());
-            return "redirect:http://localhost:8082/dashboard";
+            return "redirect:https://cool-care-production.up.railway.app/dashboard";
         }
     }
 
@@ -102,7 +102,7 @@ public class ClientController {
         service.updateClient(client);
         Long num_client = client.getNum_client();
         attributes.addAttribute("message", "Client with num_client: '" + num_client + "' is updated successfully!");
-        return "redirect:http://localhost:8082/dashboard";
+        return "redirect:https://cool-care-production.up.railway.app/dashboard";
     }
 
     @GetMapping("/delete")
@@ -114,6 +114,6 @@ public class ClientController {
             e.printStackTrace();
             attributes.addAttribute("message", e.getMessage());
         }
-        return "redirect:http://localhost:8082/dashboard";
+        return "redirect:https://cool-care-production.up.railway.app/dashboard";
     }
 }
