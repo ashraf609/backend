@@ -109,7 +109,8 @@
           <!-- Image column -->
           <td data-label="Image">
             <div th:if="${client.image != null}" style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;">
-              <img th:src="@{/clients/{image}(image=${client.image})}" alt="Client Image" style="width: 100%; height: auto; object-fit: cover;"/>
+
+              <img th:src="@{/images/{image}(image=${client.image})}" alt="Article Image" style="width:100px; height:auto;object-fit: cover;"/>
             </div>
             <div th:if="${client.image == null}">
               No Image Available

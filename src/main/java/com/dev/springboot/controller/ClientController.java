@@ -57,7 +57,7 @@ public class ClientController {
 
     private String saveImage(MultipartFile file) {
         // Directory where the image will be saved
-        String folder = "src/main/resources/static/clients/";
+        String folder = "src/main/resources/static/images/";
         try {
             Path directoryPath = Paths.get(folder);
             if (!Files.exists(directoryPath)) {
