@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Article</title>
+  <!-- Include Bootstrap CSS for styling (optional) -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+  <h1>Edit Article</h1>
+
+  <!-- Form for updating an article -->
+  <form th:action="@{/article/update}" method="POST" enctype="multipart/form-data" class="border p-4 shadow">
+    <!-- Hidden field for article ID -->
+    <input type="hidden" name="num_article" th:value="${article.num_article}" />
+
+    <!-- Price Field -->
+    <div class="form-group">
+      <label for="prix">Price:</label>
+      <input type="text" id="prix" name="prix" th:value="${article.prix}" class="form-control" />
+    </div>
+
+    <!-- Stock Field -->
+    <div class="form-group">
+      <label for="stock">Stock:</label>
+      <input type="text" id="stock" name="stock" th:value="${article.stock}" class="form-control" />
+    </div>
+
+    <!-- Current Image Display -->
+    <div class="form-group">
+      <label>Current Image:</label><br/>
+      <img th:if="${article.image}" th:src="@{/images/{image}(image=${article.image})}" alt="Current Article Image" style="max-width: 200px; height: auto;"/>
+      <p th:unless="${article.image}">No image available</p>
+    </div>
+
+    <!-- Image Upload Field for New Image -->
+    <div class="form-group">
+      <label for="imageFile">Upload New Image (optional):</label>
+      <input type="file" name="imageFile" id="imageFile" accept="image/*" class="form-control-file" />
+    </div>
+
+    <!-- Stock Minimal Field -->
+    <div class="form-group">
+      <label for="stock_minimal">Stock Minimal:</label>
+      <input type="text" id="stock_minimal" name="stock_minimal" th:value="${article.stock_minimal}" class="form-control" />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Update Article</button>
+  </form>
+</div>
+
+<!-- Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

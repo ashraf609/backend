@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Client</title>
+  <!-- Include Bootstrap CSS for styling (optional) -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+  <h1>Edit Client</h1>
+
+  <!-- Form for updating a client -->
+  <form th:action="@{/client/update}" method="POST" enctype="multipart/form-data" class="border p-4 shadow">
+    <!-- Hidden field for client ID -->
+    <input type="hidden" name="num_client" th:value="${client.num_client}" />
+
+    <!-- Name Field -->
+    <div class="form-group">
+      <label for="nom">Name:</label>
+      <input type="text" id="nom" name="nom" th:value="${client.nom}" class="form-control" />
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" th:value="${client.email}" class="form-control" />
+    </div>
+
+    <!-- Current Image Display -->
+    <div class="form-group">
+      <label>Current Image:</label><br/>
+      <img th:if="${client.image}" th:src="@{/images/{image}(image=${client.image})}" alt="Current Client Image" style="max-width: 200px; height: auto;"/>
+      <p th:unless="${client.image}">No image available</p>
+    </div>
+
+    <!-- Image Upload Field for New Image -->
+    <div class="form-group">
+      <label for="imageFile">Upload New Image (optional):</label>
+      <input type="file" name="imageFile" id="imageFile" accept="image/*" class="form-control-file" />
+    </div>
+
+    <!-- Address Field -->
+    <div class="form-group">
+      <label for="adresse">Address:</label>
+      <input type="text" id="adresse" name="adresse" th:value="${client.adresse}" class="form-control" />
+    </div>
+
+    <!-- Balance Field -->
+    <div class="form-group">
+      <label for="solde">Balance:</label>
+      <input type="number" id="solde" name="solde" th:value="${client.solde}" class="form-control" />
+    </div>
+
+    <!-- Status Field -->
+    <div class="form-group">
+      <label for="statut">Status:</label>
+      <select name="statut" id="statut" class="form-control">
+        <option th:selected="${client.statut}" value="true">Active</option>
+        <option th:selected="${!client.statut}" value="false">Inactive</option>
+      </select>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Update Client</button>
+  </form>
+</div>
+
+<!-- Include Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
