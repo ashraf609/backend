@@ -34,7 +34,7 @@ public class ArticleController {
     @GetMapping("/")
     public String showDashboard() {
 
-        return "redirect:https://cool-care-production.up.railway.app/dashboard";
+        return "redirect:https://gestion-commercial.up.railway.app/dashboard";
     }
     @GetMapping("/home")
     public String showHomePage() {
@@ -61,7 +61,7 @@ public class ArticleController {
         Long id = service.saveArticle(article).getNum_article();
         String message = "Record with num_article : '" + id + "' is saved successfully!";
         model.addAttribute("message", message);
-        return "redirect:https://cool-care-production.up.railway.app/dashboard";
+        return "redirect:https://gestion-commercial.up.railway.app/dashboard";
     }
     private String saveImage(MultipartFile file) {
         // Directory where the image will be saved
@@ -113,7 +113,7 @@ public class ArticleController {
         } catch (ArticleNotFoundException e) {
             e.printStackTrace();
             attributes.addAttribute("message", e.getMessage());
-            page = "redirect:https://cool-care-production.up.railway.app/dashboard";
+            page = "redirect:https://gestion-commercial.up.railway.app/dashboard";
         }
         return page;
     }
@@ -133,7 +133,7 @@ public class ArticleController {
         service.updateArticle(article);
         Long num_article = article.getNum_article();
         attributes.addAttribute("message", "Article with num_article: '" + num_article + "' is updated successfully!");
-        return "redirect:https://cool-care-production.up.railway.app/dashboard";
+        return "redirect:https://gestion-commercial.up.railway.app/dashboard";
     }
 
 
@@ -149,6 +149,6 @@ public class ArticleController {
             e.printStackTrace();
             attributes.addAttribute("message", e.getMessage());
         }
-        return "redirect:https://cool-care-production.up.railway.app/dashboard";
+        return "redirect:https://gestion-commercial.up.railway.app/dashboard";
     }
 }
